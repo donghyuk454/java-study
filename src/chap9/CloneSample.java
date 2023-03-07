@@ -9,7 +9,6 @@ public class CloneSample implements Cloneable {
         this.objectSample2 = objectSample2;
     }
 
-
     @Override
     protected CloneSample clone() {
         try {

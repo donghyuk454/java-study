@@ -12,21 +12,21 @@ public class ObjectSample implements Cloneable {
         this.b = b;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        ObjectSample that = (ObjectSample) o;
-//        return a == that.a && b == that.b;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof ObjectSample)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         ObjectSample that = (ObjectSample) o;
         return a == that.a && b == that.b;
     }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || !(o instanceof ObjectSample)) return false;
+//        ObjectSample that = (ObjectSample) o;
+//        return a == that.a && b == that.b;
+//    }
 
     @Override
     protected ObjectSample clone() throws CloneNotSupportedException {

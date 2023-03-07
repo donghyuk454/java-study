@@ -41,7 +41,5 @@ public class Chap9Application {
         String str4 = new String("aaa");
         System.out.println(str3 == str4);
         System.out.println(str3.equals(str4));
-
-
     }
 }
