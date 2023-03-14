@@ -1,4 +1,4 @@
-package chap6;
+package java.com.dong.chap6;
 
 public class Chap6Application {
     public static void main(String[] args) {

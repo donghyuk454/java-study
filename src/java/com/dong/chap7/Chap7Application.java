@@ -1,6 +1,4 @@
-package chap7;
-
-import chap6.ClassVariables;
+package java.com.dong.chap7;
 
 public class Chap7Application {
     public static void main(String[] args) {
