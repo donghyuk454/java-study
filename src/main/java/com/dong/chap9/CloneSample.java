@@ -1,4 +1,4 @@
-package java.com.dong.chap9;
+package main.java.com.dong.chap9;
 
 public class CloneSample implements Cloneable {
     ObjectSample objectSample1;

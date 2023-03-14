@@ -1,4 +1,4 @@
-package java.com.dong.chap9;
+package main.java.com.dong.chap9;
 
 
 public class Chap9Application {
