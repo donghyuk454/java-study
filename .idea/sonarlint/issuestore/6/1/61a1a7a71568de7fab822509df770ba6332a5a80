@@ -1,0 +1,16 @@
+
+t	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(˜‚„—úÿÿÿÿ
+<
+java:S1170
+"!Make this final field static too.(–¯ýÿÿÿÿ
+z
+java:S1450	"dRemove the "checkNumPrivateStatic" field and declare it as a local variable in the relevant methods.(†ÝÝä
+V	java:S125"<This block of commented-out lines of code should be removed.(Õ„˜ïûÿÿÿÿ
+Q	java:S125"<This block of commented-out lines of code should be removed.(²«­“
+O
+java:S1068	"9Remove this unused "checkNumPrivateStatic" private field.(†ÝÝä
+S
+java:S1068
+"8Remove this unused "checkNumPrivateFinal" private field.(–¯ýÿÿÿÿ
+Y
+java:S1068">Remove this unused "checkNumPrivateStaticFinal" private field.(˜‚„—úÿÿÿÿ
