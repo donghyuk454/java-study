@@ -50,7 +50,7 @@ public class Chap11Application {
         }
     }
 
-    // Collection 만 표준화할 경우 아래와 같은 방식으로도 작성 가능하다.
+    // 아래와 같은 방식으로도 작성 가능하다.
     private static void setElementByForeach (Collection<SampleData> collection) {
         collection.forEach( data -> data.setA(data.getA()) );
     }
