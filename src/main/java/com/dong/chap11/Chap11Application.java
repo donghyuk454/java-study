@@ -28,6 +28,15 @@ public class Chap11Application {
 
         setElementByIterator(arrayList.iterator());
         setElementByForeach(arrayList);
+
+        // comparator 를 사용해 collection 을 정렬하는 방법
+        System.out.println("arrayList first value (not sorted) = " + arrayList.get(0).getA());
+        arrayList.get(100).setA(1);
+        arrayList.get(1000).setA(5);
+        arrayList.sort((o1, o2) -> o1.getA() > o2.getA() ? -1 : 1);
+        System.out.println("arrayList first value (sorted DESC) = " + arrayList.get(0).getA());
+        arrayList.sort((o1, o2) -> o1.getA() > o2.getA() ? 1 : -1);
+        System.out.println("arrayList first value (sorted ASC) = " + arrayList.get(0).getA());
     }
 
     private static void addItemInOrder(List<SampleData> list) {
@@ -46,17 +55,18 @@ public class Chap11Application {
     private static void setElementByIterator (Iterator<SampleData> iterator) {
         while (iterator.hasNext()) {
             SampleData data = iterator.next();
-            data.setA(data.getA());
+            data.setA( data.getA() + 1 );
         }
     }
 
     // 아래와 같은 방식으로도 작성 가능하다.
     private static void setElementByForeach (Collection<SampleData> collection) {
-        collection.forEach( data -> data.setA(data.getA()) );
+        collection.forEach( data -> data.setA(data.getA() + 1) );
     }
 
 
     // ----------------------------utils----------------------------
+
     private static void checkMethodTime(MethodInterface methodInterface, List<SampleData> list) {
         long startTime = System.currentTimeMillis();
         methodInterface.doMethodBySampleDataList( list );
