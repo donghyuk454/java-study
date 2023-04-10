@@ -19,3 +19,7 @@ b
 2src/main/java/com/dong/chap11/MethodInterface.java,c\0\c0e8f470cbb4e7ab8f636698962501f60c60a978
 ]
 -src/main/java/com/dong/chap11/SampleData.java,8\b\8bf12ea2398c61aebe0da5945217519fe93eaa1d
+d
+4src/main/java/com/dong/chap12/Chap12Application.java,7\c\7cfa93774ea13f0f0e452c37a0df68d737b98e32
+c
+3src/main/java/com/dong/chap12/SampleAnnotation.java,6\0\60c6a0cbadefe2f07ccb1c4c5250d27ad15b3c22
