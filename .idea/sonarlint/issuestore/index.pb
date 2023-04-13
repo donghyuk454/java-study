@@ -23,3 +23,13 @@ d
 4src/main/java/com/dong/chap12/Chap12Application.java,7\c\7cfa93774ea13f0f0e452c37a0df68d737b98e32
 c
 3src/main/java/com/dong/chap12/SampleAnnotation.java,6\0\60c6a0cbadefe2f07ccb1c4c5250d27ad15b3c22
+a
+1src/main/java/com/dong/chap12/aop/MyAopProxy.java,c\d\cd5b82499d32f68fe4b256be09b4fd7c705936bb
+j
+:src/main/java/com/dong/chap12/enums/MyEnumApplication.java,c\1\c11e5c3f35dbcfa29012cde69e9bf77aa1b675cc
+a
+1src/main/java/com/dong/chap12/enums/Business.java,9\b\9b498653dedcdf645dfe6ad3a9b4619eb818f243
+k
+;src/main/java/com/dong/chap12/aop/AopSampleApplication.java,3\4\34adfeb254357b3ff6002a181ce83d2febd55bf0
+d
+4src/main/java/com/dong/chap12/aop/domain/MyInfo.java,8\3\838887215108a47f8d8a2d62c1c8fa65c3270304

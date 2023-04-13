@@ -1,7 +1,7 @@
 package main.java.com.dong.chap13;
 
 public class Chap13Application {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         Thread thread1 = new MyThread();
         Runnable runnable = new MyRunnable();
         Thread thread2 = new Thread(runnable);
@@ -22,6 +22,59 @@ public class Chap13Application {
         thread2.setPriority(7);
         thread1.start();
         thread2.start();
+
+
+        Thread.sleep(1000);
+        System.out.println("\n");
+
+        // main 쓰레드 그룹
+        ThreadGroup mainThreadGroup = Thread.currentThread().getThreadGroup();
+        ThreadGroup threadGroup = new ThreadGroup("Thread Group 1");
+        ThreadGroup subThreadGroup = new ThreadGroup(threadGroup, "Thread Group 2");
+
+        Runnable runnable1 = () -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+
+        Thread thread3 = new Thread(threadGroup, runnable1);
+        Thread thread4 = new Thread(subThreadGroup, runnable1);
+        thread3.start();
+        thread4.start();
+
+        System.out.println("--------- Main Thread Group Information -----------");
+        System.out.println("Thread name : " + mainThreadGroup.getName()
+                + "\n - Active thread count : " + mainThreadGroup.activeCount()
+                + "\n - Active thread group count : " + mainThreadGroup.activeGroupCount()
+                + "\n - Is parent of threadGroup : " + mainThreadGroup.parentOf(threadGroup)
+                + "\n - Is parent of subThreadGroup : " + mainThreadGroup.parentOf(subThreadGroup)
+                + "\n - Parent Name: " + mainThreadGroup.getParent().getName()
+                + "\n");
+
+        System.out.println("--------- Thread Group Information -----------");
+        System.out.println("Thread name : " + threadGroup.getName()
+                + "\n - Active thread count : " + threadGroup.activeCount()
+                + "\n - Active thread group count : " + threadGroup.activeGroupCount()
+                + "\n - Is parent of mainThreadGroup : " + threadGroup.parentOf(mainThreadGroup)
+                + "\n - Is parent of subThreadGroup : " + threadGroup.parentOf(subThreadGroup)
+                + "\n - Parent Name: " + threadGroup.getParent().getName()
+                + "\n");
+
+        System.out.println("--------- Thread Group Information -----------");
+        System.out.println("Thread name : " + subThreadGroup.getName()
+                + "\n - Active thread count : " + subThreadGroup.activeCount()
+                + "\n - Active thread group count : " + subThreadGroup.activeGroupCount()
+                + "\n - Is parent of mainThreadGroup : " + subThreadGroup.parentOf(mainThreadGroup)
+                + "\n - Is parent of threadGroup : " + subThreadGroup.parentOf(threadGroup)
+                + "\n - Parent Name: " + subThreadGroup.getParent().getName()
+                + "\n");
+
+        System.out.println("--------- Main Thread Group List -----------");
+
+        mainThreadGroup.list();
     }
 }
 
