@@ -45,36 +45,29 @@ public class Chap13Application {
         thread3.start();
         thread4.start();
 
+        // main 쓰레드 그룹의 parent 는 system 쓰레드 !
         System.out.println("--------- Main Thread Group Information -----------");
-        System.out.println("Thread name : " + mainThreadGroup.getName()
-                + "\n - Active thread count : " + mainThreadGroup.activeCount()
-                + "\n - Active thread group count : " + mainThreadGroup.activeGroupCount()
-                + "\n - Is parent of threadGroup : " + mainThreadGroup.parentOf(threadGroup)
-                + "\n - Is parent of subThreadGroup : " + mainThreadGroup.parentOf(subThreadGroup)
-                + "\n - Parent Name: " + mainThreadGroup.getParent().getName()
-                + "\n");
+        printThreadInformation(mainThreadGroup, threadGroup, subThreadGroup);
 
         System.out.println("--------- Thread Group Information -----------");
-        System.out.println("Thread name : " + threadGroup.getName()
-                + "\n - Active thread count : " + threadGroup.activeCount()
-                + "\n - Active thread group count : " + threadGroup.activeGroupCount()
-                + "\n - Is parent of mainThreadGroup : " + threadGroup.parentOf(mainThreadGroup)
-                + "\n - Is parent of subThreadGroup : " + threadGroup.parentOf(subThreadGroup)
-                + "\n - Parent Name: " + threadGroup.getParent().getName()
-                + "\n");
+        printThreadInformation(threadGroup, mainThreadGroup, subThreadGroup);
 
         System.out.println("--------- Thread Group Information -----------");
-        System.out.println("Thread name : " + subThreadGroup.getName()
-                + "\n - Active thread count : " + subThreadGroup.activeCount()
-                + "\n - Active thread group count : " + subThreadGroup.activeGroupCount()
-                + "\n - Is parent of mainThreadGroup : " + subThreadGroup.parentOf(mainThreadGroup)
-                + "\n - Is parent of threadGroup : " + subThreadGroup.parentOf(threadGroup)
-                + "\n - Parent Name: " + subThreadGroup.getParent().getName()
-                + "\n");
+        printThreadInformation(subThreadGroup, threadGroup, mainThreadGroup);
 
         System.out.println("--------- Main Thread Group List -----------");
 
         mainThreadGroup.list();
+    }
+
+    private static void printThreadInformation (ThreadGroup threadGroup1, ThreadGroup threadGroup2, ThreadGroup threadGroup3) {
+        System.out.println("Thread name : " + threadGroup1.getName()
+                + "\n - Active thread count : " + threadGroup1.activeCount()
+                + "\n - Active thread group count : " + threadGroup1.activeGroupCount()
+                + "\n - Is parent of " + threadGroup2.getName() + " : " + threadGroup1.parentOf(threadGroup2)
+                + "\n - Is parent of " + threadGroup3.getName() + " : " + threadGroup1.parentOf(threadGroup3)
+                + "\n - Parent Name: " + threadGroup1.getParent().getName()
+                + "\n");
     }
 }
 
