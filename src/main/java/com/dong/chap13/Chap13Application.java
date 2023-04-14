@@ -49,15 +49,35 @@ public class Chap13Application {
         System.out.println("--------- Main Thread Group Information -----------");
         printThreadInformation(mainThreadGroup, threadGroup, subThreadGroup);
 
-        System.out.println("--------- Thread Group Information -----------");
+        System.out.println("--------- Thread Group 1 Information -----------");
         printThreadInformation(threadGroup, mainThreadGroup, subThreadGroup);
 
-        System.out.println("--------- Thread Group Information -----------");
+        System.out.println("--------- Thread Group 2 Information -----------");
         printThreadInformation(subThreadGroup, threadGroup, mainThreadGroup);
 
         System.out.println("--------- Main Thread Group List -----------");
 
         mainThreadGroup.list();
+
+        // daemon thread
+        Thread.sleep(1500);
+        Thread daemonThread = new Thread(() -> {
+            int count = 0;
+            while (true) {
+                System.out.println("This is daemon thread | count = " + count);
+                count++;
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        daemonThread.setDaemon(true);
+        // 데몬 쓰레드는 메인쓰레드가 종료되면 함께 종료된다.
+        daemonThread.start();
+        Thread.sleep(1000);
     }
 
     private static void printThreadInformation (ThreadGroup threadGroup1, ThreadGroup threadGroup2, ThreadGroup threadGroup3) {
