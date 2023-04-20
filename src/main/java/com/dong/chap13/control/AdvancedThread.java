@@ -1,4 +1,4 @@
-package main.java.com.dong.chap13;
+package main.java.com.dong.chap13.control;
 
 public class AdvancedThread implements Runnable {
 

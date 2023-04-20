@@ -1,4 +1,4 @@
-package main.java.com.dong.chap13;
+package main.java.com.dong.chap13.basic;
 
 public class MyThread extends Thread {
     @Override
