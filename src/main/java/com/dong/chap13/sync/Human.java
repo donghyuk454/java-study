@@ -10,12 +10,12 @@ public class Human {
         this.wallet = wallet;
     }
 
-    public void shopping(int price) {
+    public void shopping(int price) throws InterruptedException {
         System.out.print("shopping! => ");
         this.wallet.pay(price);
     }
 
-    public void work(int salary) {
+    public void work(int salary) throws InterruptedException {
         System.out.print("work! => ");
         this.wallet.earn(salary);
     }
