@@ -10,11 +10,16 @@ public class Wallet {
     // synchronized 함수를 통해 동기화
     public synchronized void pay (int bill) {
         if (this.money < bill) {
-            System.out.println("you can't buy !");
+            System.out.println("I don't have enough money !");
             return;
         }
         money -= bill;
-        System.out.println("My total: " + this.money);
+        System.out.println("I paid " + bill +"!! My total money is " + this.money);
+    }
+
+    public synchronized void earn (int salary) {
+        this.money += salary;
+        System.out.println("I earned " + salary +"!! My total money is " + this.money);
     }
 
     public int getMoney() {
