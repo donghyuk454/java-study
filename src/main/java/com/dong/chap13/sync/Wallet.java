@@ -15,6 +15,7 @@ public class Wallet {
         }
         money -= bill;
         System.out.println("I paid " + bill +"!! My total money is " + this.money);
+        notify();
     }
 
     // 월급을 받은 사실을 notify 나 notifyAll 을 통해 알린다 !
