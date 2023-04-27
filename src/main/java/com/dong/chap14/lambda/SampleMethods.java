@@ -1,4 +1,4 @@
-package main.java.com.dong.chap14;
+package main.java.com.dong.chap14.lambda;
 
 import java.util.function.*;
 
