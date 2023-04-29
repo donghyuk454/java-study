@@ -1,11 +1,13 @@
 package main.java.com.dong.chap14.stream.repository;
 
-import main.java.com.dong.chap14.stream.DataManager;
+import main.java.com.dong.chap14.stream.util.DataManager;
 import main.java.com.dong.chap14.stream.entity.Person;
 import main.java.com.dong.chap14.stream.enums.Job;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class PersonRepositoryImpl implements PersonRepository {
 
@@ -25,28 +27,35 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     @Override
     public Optional<Person> findById(long id) {
-        return Optional.empty();
+        return entities.stream()
+                .filter(p->p.getId().equals(id))
+                .findAny();
     }
 
     @Override
-    public Person save(Person person) {
-        return null;
+    public synchronized Person save(Person person) {
+        // person 을 추가하거나 수정한 뒤 entities 수정
+        entities = DataManager.persist(person);
+        return person;
     }
 
     @Override
     public Optional<Person> findByMame(String name) {
-        return Optional.empty();
+        return entities.stream()
+                .filter(p -> p.getName().equals(name))
+                .findAny();
     }
 
     @Override
     public List<Person> findByJob(Job job) {
-        return null;
+        return entities.stream()
+                .filter(p -> p.getJob().equals(job))
+                .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Person> findMaxAgePerson() {
-        return Optional.empty();
+        return entities.stream()
+                .max(Comparator.comparingInt(Person::getAge));
     }
-
-
 }
