@@ -38,7 +38,7 @@ public class PersonController {
 
     public BaseResponse getPersonNameListByJob (Job job) {
         List<String> nameList =
-                personService.getPersonNameByJob(job);
+                personService.getPersonNameListByJob(job);
 
         return BaseResponse.isOk(nameList, List.class);
     }
