@@ -1,4 +1,4 @@
-package main.java.com.dong.chap14.stream;
+package main.java.com.dong.chap14.stream.util;
 
 import main.java.com.dong.chap14.stream.entity.Person;
 import main.java.com.dong.chap14.stream.enums.Gender;
@@ -32,21 +32,20 @@ public class DataManager {
         return data;
     }
 
-    public static void persist(Person person) {
+    public static List<Person> persist(Person person) {
         Long id = person.getId();
         AtomicBoolean isPresent = new AtomicBoolean(false);
 
         // 존재하면 데이터 수정
+        // 존재하지 않는 경우 데이터 추가
         data.stream()
                 .filter(p -> id.equals(p.getId()))
-                .findAny()
-                .ifPresent(p -> {
+                .findFirst()
+                .ifPresentOrElse(p -> {
                     p.setJob(person.getJob());
                     isPresent.set(true);
-                });
+                }, () -> data.add(person) );
 
-        // 존재하지 않는 경우 데이터 추가
-        if(!isPresent.get())
-            data.add(person);
+        return data;
     }
 }
