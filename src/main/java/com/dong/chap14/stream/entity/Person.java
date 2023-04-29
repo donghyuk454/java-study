@@ -46,4 +46,15 @@ public class Person {
     public Gender getGender() {
         return gender;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", job=" + job +
+                ", gender=" + gender.getName() +
+                '}';
+    }
 }
