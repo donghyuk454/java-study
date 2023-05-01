@@ -4,7 +4,7 @@ import main.java.com.dong.chap14.stream.entity.Person;
 import main.java.com.dong.chap14.stream.enums.Job;
 import main.java.com.dong.chap14.stream.repository.PersonRepository;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PersonService {
@@ -60,5 +60,16 @@ public class PersonService {
     public Person getMaxAgePerson () {
         return personRepository.findMaxAgePerson()
                 .orElse(null);
+    }
+
+    public IntSummaryStatistics getIntSummaryStatisticByAge () {
+        List<Person> personList = personRepository.findAll();
+
+        return personList.stream()
+                .collect(Collectors.summarizingInt(Person::getAge));
+    }
+
+    public Map<Job, Long> getPopularJobAndCount () {
+        return personRepository.findPopularJob();
     }
 }
