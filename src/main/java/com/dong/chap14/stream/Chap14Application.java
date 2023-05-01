@@ -21,8 +21,10 @@ public class Chap14Application {
         PersonService personService = PersonService.getInstance(personRepository);
         PersonController personController = PersonController.getInstance(personService);
 
+        // 모든 데이터 확인
         printMessage("모든 데이터", DataManager.getAllDataWithMap());
 
+        // 내 ID 가져오기
         String myName = "이동혁";
         Long myId = (Long) personController
                 .getIdByName("이동혁")
@@ -30,26 +32,31 @@ public class Chap14Application {
         printMessage("내 이름", myName);
         printMessage("내 ID", myId);
 
+        // 내 정보 가져오기
         Person myInfo = (Person) personController
                 .getMyInformation(myId)
                 .getBody();
         printMyInformation(myInfo);
 
+        // 현재 마케터 리스트 가져오기
         String marketerList = (String) personController
                 .getPersonNameListByJob(Job.MARKETER)
                 .getBody();
         printMarketerList(marketerList);
 
+        // 내 직업을 마케터로 변경하기
         myInfo = (Person) personController
                 .changeJob(new ChangeJobDto(myId, Job.MARKETER))
                 .getBody();
         printMyInformation(myInfo);
 
+        // 마케터 리스트 가져오기
         marketerList = (String) personController
                 .getPersonNameListByJob(Job.MARKETER)
                 .getBody();
         printMarketerList(marketerList);
 
+        // 나이가 가장 많은 사람 정보 가져오기
         Person maxAgePerson = (Person) personController
                 .getMaxAgePerson()
                 .getBody();
