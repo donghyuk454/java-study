@@ -7,6 +7,7 @@ import main.java.com.dong.chap14.stream.enums.Job;
 import main.java.com.dong.chap14.stream.service.PersonService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonController {
 
@@ -37,13 +38,19 @@ public class PersonController {
     }
 
     public BaseResponse getPersonNameListByJob (Job job) {
-        List<String> nameList =
-                personService.getPersonNameListByJob(job);
+        String nameList = personService.getPersonNameListByJob(job)
+                        .stream()
+                        .collect(Collectors.joining(","));
 
-        return BaseResponse.isOk(nameList, List.class);
+        return BaseResponse.isOk(nameList, String.class);
     }
 
     public BaseResponse getIdByName (String name) {
         return BaseResponse.isOk(personService.getIdByName(name), Long.class);
+    }
+
+    public BaseResponse getMaxAgePerson () {
+        Person maxAgePerson = personService.getMaxAgePerson();
+        return maxAgePerson != null ? BaseResponse.isOk(maxAgePerson, Person.class) : BaseResponse.isBadRequest("사람이 없어요!");
     }
 }
