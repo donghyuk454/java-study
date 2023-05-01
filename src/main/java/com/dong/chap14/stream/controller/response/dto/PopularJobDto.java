@@ -1,4 +1,4 @@
-package main.java.com.dong.chap14.stream.controller.response;
+package main.java.com.dong.chap14.stream.controller.response.dto;
 
 import main.java.com.dong.chap14.stream.enums.Job;
 

@@ -2,7 +2,7 @@ package main.java.com.dong.chap14.stream.controller;
 
 import main.java.com.dong.chap14.stream.controller.request.ChangeJobDto;
 import main.java.com.dong.chap14.stream.controller.response.BaseResponse;
-import main.java.com.dong.chap14.stream.controller.response.PopularJobDto;
+import main.java.com.dong.chap14.stream.controller.response.dto.PopularJobDto;
 import main.java.com.dong.chap14.stream.entity.Person;
 import main.java.com.dong.chap14.stream.enums.Job;
 import main.java.com.dong.chap14.stream.service.PersonService;
