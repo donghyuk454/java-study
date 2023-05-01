@@ -2,11 +2,14 @@ package main.java.com.dong.chap14.stream.controller;
 
 import main.java.com.dong.chap14.stream.controller.request.ChangeJobDto;
 import main.java.com.dong.chap14.stream.controller.response.BaseResponse;
+import main.java.com.dong.chap14.stream.controller.response.PopularJobDto;
 import main.java.com.dong.chap14.stream.entity.Person;
 import main.java.com.dong.chap14.stream.enums.Job;
 import main.java.com.dong.chap14.stream.service.PersonService;
 
-import java.util.List;
+import java.util.IntSummaryStatistics;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class PersonController {
@@ -52,5 +55,22 @@ public class PersonController {
     public BaseResponse getMaxAgePerson () {
         Person maxAgePerson = personService.getMaxAgePerson();
         return maxAgePerson != null ? BaseResponse.isOk(maxAgePerson, Person.class) : BaseResponse.isBadRequest("사람이 없어요!");
+    }
+
+    public BaseResponse getIntSummaryStatisticByAge () {
+        IntSummaryStatistics intSummaryStatistics = personService.getIntSummaryStatisticByAge();
+
+        return intSummaryStatistics != null ? BaseResponse.isOk(intSummaryStatistics, IntSummaryStatistics.class) : BaseResponse.isBadRequest("데이터 없어요!");
+    }
+
+    public BaseResponse getPopularJobAndCount () {
+        Map<Job, Long> result = personService.getPopularJobAndCount();
+
+        Iterator<Job> iterator = result.keySet().iterator();
+        if (iterator.hasNext()) {
+            Job popularJob = iterator.next();
+            return BaseResponse.isOk(new PopularJobDto(popularJob, result.get(popularJob)), PopularJobDto.class);
+        }
+        return BaseResponse.isBadRequest("데이터 없어요!");
     }
 }
