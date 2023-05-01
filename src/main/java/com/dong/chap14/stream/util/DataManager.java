@@ -6,7 +6,9 @@ import main.java.com.dong.chap14.stream.enums.Job;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 public class DataManager {
 
@@ -47,5 +49,10 @@ public class DataManager {
                 }, () -> data.add(person) );
 
         return data;
+    }
+
+    public static Map<Long, Person> getAllDataWithMap () {
+        return data.stream()
+                .collect(Collectors.toMap(Person::getId, p->p));
     }
 }
