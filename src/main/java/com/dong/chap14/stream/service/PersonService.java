@@ -56,4 +56,9 @@ public class PersonService {
 
         return person == null ? null : person.getId();
     }
+
+    public Person getMaxAgePerson () {
+        return personRepository.findMaxAgePerson()
+                .orElse(null);
+    }
 }
