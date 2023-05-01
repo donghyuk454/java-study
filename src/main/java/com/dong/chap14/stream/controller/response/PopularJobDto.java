@@ -22,9 +22,8 @@ public class PopularJobDto {
 
     @Override
     public String toString() {
-        return "PopularJobDto{" +
-                "job=" + job +
-                ", count=" + count +
+        return "직업=" + job.getName() +
+                ", 수=" + count +
                 '}';
     }
 }
