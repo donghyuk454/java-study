@@ -2,6 +2,7 @@ package main.java.com.dong.chap14.stream;
 
 import main.java.com.dong.chap14.stream.controller.PersonController;
 import main.java.com.dong.chap14.stream.controller.request.ChangeJobDto;
+import main.java.com.dong.chap14.stream.controller.response.dto.PopularJobDto;
 import main.java.com.dong.chap14.stream.entity.Person;
 import main.java.com.dong.chap14.stream.enums.Job;
 import main.java.com.dong.chap14.stream.repository.PersonRepository;
@@ -9,6 +10,7 @@ import main.java.com.dong.chap14.stream.repository.PersonRepositoryImpl;
 import main.java.com.dong.chap14.stream.service.PersonService;
 import main.java.com.dong.chap14.stream.util.DataManager;
 
+import java.util.IntSummaryStatistics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,6 +63,18 @@ public class Chap14Application {
                 .getMaxAgePerson()
                 .getBody();
         printMessage("나이 가장 많은 사람", maxAgePerson);
+
+        // 나이에 대한 통계 정보 가져오기
+        IntSummaryStatistics statistics = (IntSummaryStatistics) personController
+                .getIntSummaryStatisticByAge()
+                .getBody();
+        printMessage("통계", statistics);
+
+        // 가장 인기있는 직업과 수 가져오기
+        PopularJobDto popularJobDto = (PopularJobDto) personController
+                .getPopularJobAndCount()
+                .getBody();
+        printMessage("가장 인기있는 직업과 수", popularJobDto);
     }
 
     private static void printMyInformation (Person myInformation) {
@@ -70,7 +84,6 @@ public class Chap14Application {
     private static void printMarketerList (String marketerList) {
         printMessage("마케터 리스트", marketerList);
     }
-
 
     private static <T>void printMessage (String message, T obj) {
         message += " : %s";
