@@ -48,6 +48,10 @@ public class Chap14Application {
                 .getBody();
         printMarketerList(marketerList);
 
+        Person maxAgePerson = (Person) personController
+                .getMaxAgePerson()
+                .getBody();
+        printMessage("나이 가장 많은 사람", maxAgePerson);
     }
 
     private static void printMyInformation (Person myInformation) {
