@@ -7,8 +7,8 @@ import main.java.com.dong.chap14.stream.enums.Job;
 import main.java.com.dong.chap14.stream.repository.PersonRepository;
 import main.java.com.dong.chap14.stream.repository.PersonRepositoryImpl;
 import main.java.com.dong.chap14.stream.service.PersonService;
+import main.java.com.dong.chap14.stream.util.DataManager;
 
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +20,8 @@ public class Chap14Application {
         PersonRepository personRepository = PersonRepositoryImpl.getInstance();
         PersonService personService = PersonService.getInstance(personRepository);
         PersonController personController = PersonController.getInstance(personService);
+
+        printMessage("모든 데이터: ", DataManager.getAllDataWithMap());
 
         String myName = "이동혁";
         Long myId = (Long) personController
