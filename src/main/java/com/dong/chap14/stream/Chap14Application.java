@@ -21,7 +21,7 @@ public class Chap14Application {
         PersonService personService = PersonService.getInstance(personRepository);
         PersonController personController = PersonController.getInstance(personService);
 
-        printMessage("모든 데이터: ", DataManager.getAllDataWithMap());
+        printMessage("모든 데이터", DataManager.getAllDataWithMap());
 
         String myName = "이동혁";
         Long myId = (Long) personController
