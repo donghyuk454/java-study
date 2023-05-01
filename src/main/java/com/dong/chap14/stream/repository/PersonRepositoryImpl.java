@@ -6,6 +6,7 @@ import main.java.com.dong.chap14.stream.enums.Job;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,6 +24,11 @@ public class PersonRepositoryImpl implements PersonRepository {
 
     public static PersonRepositoryImpl getInstance() {
         return PersonRepositoryHolder.INSTANCE;
+    }
+
+    @Override
+    public List<Person> findAll() {
+        return entities;
     }
 
     @Override
@@ -57,5 +63,13 @@ public class PersonRepositoryImpl implements PersonRepository {
     public Optional<Person> findMaxAgePerson() {
         return entities.stream()
                 .max(Comparator.comparingInt(Person::getAge));
+    }
+
+    @Override
+    public Map<Job, Long> findPopularJob() {
+        return entities.stream()
+                .collect(
+                        Collectors.groupingBy(Person::getJob, Collectors.counting())
+                );
     }
 }
