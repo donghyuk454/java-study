@@ -25,17 +25,15 @@ public class Chap14Application {
         Long myId = (Long) personController
                 .getIdByName("이동혁")
                 .getBody();
-        String result = String.format("My name : %s", myName);
-        logger.log(Level.INFO, result);
-        result = String.format("My id : %s", myId);
-        logger.log(Level.INFO, result);
+        printMessage("내 이름", myName);
+        printMessage("내 ID", myId);
 
         Person myInfo = (Person) personController
                 .getMyInformation(myId)
                 .getBody();
         printMyInformation(myInfo);
 
-        List marketerList = (List) personController
+        String marketerList = (String) personController
                 .getPersonNameListByJob(Job.MARKETER)
                 .getBody();
         printMarketerList(marketerList);
@@ -45,7 +43,7 @@ public class Chap14Application {
                 .getBody();
         printMyInformation(myInfo);
 
-        marketerList = (List) personController
+        marketerList = (String) personController
                 .getPersonNameListByJob(Job.MARKETER)
                 .getBody();
         printMarketerList(marketerList);
@@ -53,12 +51,17 @@ public class Chap14Application {
     }
 
     private static void printMyInformation (Person myInformation) {
-        String result = String.format("My Information : %s", myInformation);
-        logger.log(Level.INFO, result);
+        printMessage("내 정보", myInformation);
     }
 
-    private static void printMarketerList (List marketerList) {
-        String result = String.format("마케터 리스트 : %s", marketerList);
+    private static void printMarketerList (String marketerList) {
+        printMessage("마케터 리스트", marketerList);
+    }
+
+
+    private static <T>void printMessage (String message, T obj) {
+        message += " : %s";
+        String result = String.format(message, obj.toString());
         logger.log(Level.INFO, result);
     }
 }
